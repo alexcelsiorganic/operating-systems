@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 
 using namespace std;
@@ -26,20 +28,21 @@ char* Creator(char* file_employees) {
 	return creator;
 }
 
-
+bool compare(employee a, employee b) {
+	return (a.num < b.num);
+}
 
 void checkDataInBinaryFile(char* fileName)
 {
 	ifstream in(fileName, ios::binary);
 
-	cout << "Empls:\n";
+	cout << "Empls:" << endl;
 	while (in.peek() != EOF)
 	{
 		employee e;
 		in.read((char*)&e, sizeof(employee));
-		cout << "Empl number:\n" << e.num << "\nEmpl name:\n" << e.name << "\nEmpl hours:\n" << e.hours << endl;
+		cout << "Empl number: " << e.num << endl << "Empl name: " << e.name << endl << "Empl hours: " << e.hours << endl << endl;
 	}
-
 	in.close();
 }
 
@@ -106,6 +109,7 @@ int main() {
 	std::cout << std::endl;
 	char* creator = Creator(file_employees);
 	runCreatorProcess(creator);
+	checkDataInBinaryFile(file_employees);
 	char* file_report = new char[100];	
 	std::cout << "File report name:" << std::endl;
 	std::cin >> file_report;
@@ -120,6 +124,7 @@ int main() {
 	char* e = strcat(d, " ");
 	char* reporter = strcat(e, sal.c_str());
 	runReporterProcess(reporter);
+	checkDataInFile(file_report);
 	system("pause");
 		return 0;
 }
