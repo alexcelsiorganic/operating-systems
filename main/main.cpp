@@ -67,8 +67,21 @@ int main() {
     polynoms[0] = polyn(x, coef_numer, deg_of_numerator);
     polynoms[1] = polyn(x, coef_denom, deg_of_denomenator);
     thread[0] = CreateThread(NULL, 0, polynom, (void*)&polynoms[0], 0, &thrId[0]);
+    if (thread[0] == NULL) {
+        cout << "Error!";
+        return GetLastError();
+    }
     thread[1] = CreateThread(NULL, 0, polynom, (void*)&polynoms[1], 0, &thrId[1]);
+    if (thread[1] == NULL) {
+        cout << "Error!";
+        return GetLastError();
+    }
     WaitForMultipleObjects(2, thread, TRUE, INFINITE);
-    std::cout << "f(" << x << ") = " << polynoms[0].value / polynoms[1].value;
+    if (polynoms[1].value != 0) {
+        std::cout << "f(" << x << ") = " << polynoms[0].value / polynoms[1].value;
+    }
+    else {
+        std::cout << "Denomenator can't be 0";
+    }
 }
 
