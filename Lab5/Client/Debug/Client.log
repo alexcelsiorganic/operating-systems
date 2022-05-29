@@ -1,0 +1,5 @@
+﻿  Client.cpp
+C:\Users\Александр\Source\Repos\Client\Client.cpp(122,9): warning C4101: dwBytesRead: неиспользованная локальная переменная
+C:\Users\Александр\Source\Repos\Client\Client.cpp(118): warning C4715: Client::read: значение возвращается не при всех путях выполнения
+C:\Users\Александр\Source\Repos\Client\Client.cpp(84): warning C4715: Client::modify: значение возвращается не при всех путях выполнения
+  Client.vcxproj -> C:\Users\Александр\Source\Repos\Lab5\Debug\Client.exe
